@@ -12,24 +12,16 @@ const Home = () => {
     const [number2, onChangeNumber2] = React.useState('');
     
     const [isFocused, setIsFocused] = useState(false);
-
-    const onFocus = () => {
-    setIsFocused(true);
-    };
-
-    const onBlur = () => {
-    setIsFocused(false);
-    };
+    const onFocus = () => { setIsFocused(true); };
+    const onBlur = () => { setIsFocused(false); };
 
     const [isFocused2, setIsFocused2] = useState(false);
+    const onFocus2 = () => { setIsFocused2(true); };
+    const onBlur2 = () => { setIsFocused2(false); };
 
-    const onFocus2 = () => {
-    setIsFocused2(true);
-    };
+    const [secureTextEntry, setSecureTextEntry] = useState(true);
+    const [usedImage, setUsedImage] = useState(true);
 
-    const onBlur2 = () => {
-    setIsFocused2(false);
-    };
 
     const styles2 = StyleSheet.create({
       SectionStyle1: {
@@ -37,9 +29,9 @@ const Home = () => {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 16,
+        marginTop: scale(16),
         borderWidth: isFocused ? 2.5 : 1.5,  // size/width of the border
-        borderRadius: 12, 
+        borderRadius: scale(12), 
         height: scale(60),
         width: scale(350),
         
@@ -49,9 +41,9 @@ const Home = () => {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 16,
+        marginTop: scale(16),
         borderWidth: isFocused2 ? 2.5 : 1.5,  // size/width of the border
-        borderRadius: 12, 
+        borderRadius: scale(12), 
         height: scale(60),
         width: scale(350),
         
@@ -65,7 +57,7 @@ const Home = () => {
         source={require('C:/Users/beril/Desktop/app2/app/openwallet/logo.jpg')}
       />
         <Image
-          style={{resizeMode: 'cover', height: scale(74), width: scale(350), marginTop: 48, marginBottom: 16}}
+          style={{resizeMode: 'cover', height: scale(74), width: scale(350), marginTop: scale(48), marginBottom: scale(16)}}
           source={require('./openwallet/Text.jpg')}
       />
 
@@ -79,13 +71,14 @@ const Home = () => {
         maxLength={11}
         onFocus={onFocus}
         onBlur={onBlur}
-        style={{flex:1,}}
+        style={{flex:1, fontSize: scale(16)}}
         onChangeText={onChangeNumber}
         value={number}
         label="TC Kimlik Numarası"
         placeholder="TC Kimlik Numarası"
         keyboardType="numeric"
         placeholderTextColor={'#667085'}
+        numberOfLines={2}
       />
 
       </View>
@@ -100,27 +93,36 @@ const Home = () => {
         maxLength={6}
         onFocus={onFocus2}
         onBlur={onBlur2}
-        style={{flex:1, borderBottomWidth: 0, borderTopWidth: 0, borderLeftWidth: 0, borderRightWidth: 0, }}
+        style={{flex:1, fontSize: scale(16), }}
         onChangeText={onChangeNumber2}
         value={number2}
         label="Ödero Şifresi"
         placeholder="Ödero Şifresi"
         keyboardType="numeric"
         placeholderTextColor={'#667085'}
+        secureTextEntry={secureTextEntry}
       />
+      <TouchableOpacity style={({pressed}) => {opacity: pressed ? 0.5 : 1}} 
+          onPress={ () => {setUsedImage(!usedImage); setSecureTextEntry(!secureTextEntry);} }>
+          <Image
+            source={usedImage ? require('./openwallet/closed.png') : require('./openwallet/opened.png') }
+            style={{height:scale(24), width:scale(28), marginRight: scale(12)}}
+          />
+      </TouchableOpacity>
       
+
       </View>
       
       <View>   
         <TouchableOpacity style={({pressed}) => {opacity: pressed ? 0.5 : 1}}>
           <Image
           source={require('./openwallet/Button.jpg')}
-          style={{marginTop: 32, height:scale(60), width:scale(350),}}
+          style={{marginTop: scale(32), height:scale(60), width:scale(350),}}
           />
         </TouchableOpacity>
       </View>
 
-      <View style={{flexDirection: 'row', marginTop:24}}>
+      <View style={{flexDirection: 'row', marginTop:scale(24)}}>
 
       <TouchableOpacity style={({pressed}) => {opacity: pressed ? 0.5 : 1}}>
       <Image
@@ -130,7 +132,7 @@ const Home = () => {
       </TouchableOpacity>
 
       <Image
-          style={{marginRight: scale(90), marginTop:5,}}
+          style={{marginRight: scale(80), marginTop:scale(4), height: scale(14.5), width:scale(100) }}
           source={require('./openwallet/hatırla.jpg')}
       />
 
@@ -142,10 +144,7 @@ const Home = () => {
        </TouchableOpacity>
 
       </View> 
-      
-  
-
-    </View>      
+     </View>      
           
      )
 };

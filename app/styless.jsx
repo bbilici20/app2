@@ -8,24 +8,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
       },
-    button: {
-      alignItems: 'center',
-      backgroundColor: '#DDDDDD',
-      padding: 10,
-    },
-    countContainer: {
-      alignItems: 'center',
-      padding: 10,
-    },
-    scrollView: {
-        flex: 1,
-        backgroundColor: 'pink',
-        marginHorizontal: 20,
-        
-      },
-      text: {
-        fontSize: 30,
-      },
+    
       ImageIconStyle: {
         marginTop: 24,
         resizeMode: 'stretch',
@@ -49,13 +32,13 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 16,
+        marginTop: scale(16),
         borderWidth: 1.5,  // size/width of the border
         borderColor: '#E4EBF2',  // color of the border
         borderRadius: 15, 
         height: scale(60),
         width: scale(350),
-        radius: 12,
+        
     },
     ImageStyle: {
         padding: 10,
