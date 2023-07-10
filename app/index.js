@@ -21,6 +21,7 @@ const Home = () => {
 
     const [secureTextEntry, setSecureTextEntry] = useState(true);
     const [usedImage, setUsedImage] = useState(true);
+    const [isChecked, setIsChecked] = useState(true);
 
 
     const styles2 = StyleSheet.create({
@@ -122,7 +123,7 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={{flexDirection: 'row', marginTop:scale(24)}}>
+      <View style={{flexDirection: 'row', marginTop:scale(24),}}>
 
       <TouchableOpacity style={({pressed}) => {opacity: pressed ? 0.5 : 1}}>
       <Image
